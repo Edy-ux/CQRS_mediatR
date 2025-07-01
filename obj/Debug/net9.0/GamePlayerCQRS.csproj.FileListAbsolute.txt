@@ -212,3 +212,4 @@ C:\usr\.NET\GamePlayerCQRS\obj\Debug\net9.0\refint\GamePlayerCQRS.dll
 C:\usr\.NET\GamePlayerCQRS\obj\Debug\net9.0\GamePlayerCQRS.pdb
 C:\usr\.NET\GamePlayerCQRS\obj\Debug\net9.0\GamePlayerCQRS.genruntimeconfig.cache
 C:\usr\.NET\GamePlayerCQRS\obj\Debug\net9.0\ref\GamePlayerCQRS.dll
+C:\usr\.NET\GamePlayerCQRS\obj\Debug\net9.0\GamePlayerCQRS.sourcelink.json

@@ -34,10 +34,11 @@ public class GamePlayerController : ControllerBase
     {
         try
         {
+            // #region ClientWhere
             var activePlayers = await _context.GamePlayers
-              .Where(g => g.Status == PlayerStatus.Active)// Or g => EF.Property<PlayerStatus>(g, "Status")
+              .Where(gp => gp.Status == PlayerStatus.Active) // Or g => EF.Property<PlayerStatus>(g, "Status")
               .ToListAsync();
-
+            // #endregion
             return Ok(activePlayers);
         }
         catch (Exception ex)
