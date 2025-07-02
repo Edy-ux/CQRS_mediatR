@@ -6,11 +6,10 @@ namespace GamePlayerCQRS.Data
 {
     public class GamePlayerDbContext : DbContext
     {
+        public DbSet<GamePlayer> GamePlayers { get; set; }
         public GamePlayerDbContext(DbContextOptions<GamePlayerDbContext> options) : base(options)
         {
         }
-
-        public DbSet<GamePlayer> GamePlayers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

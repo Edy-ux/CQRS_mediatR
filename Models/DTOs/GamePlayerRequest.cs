@@ -17,7 +17,7 @@ namespace GamePlayerCQRS.Models.DTOs
         public string Password { get; set; } = string.Empty;
 
         [StringLength(20, ErrorMessage = "Role deve ter no máximo 20 caracteres")]
-        public string? Role { get; set; } = "Player";
+        public string Role { get; set; } = "Player";
     }
 
     public class UpdateGamePlayerRequest
