@@ -1,42 +1,31 @@
 
 using CSharpFunctionalExtensions;
-using GamePlayerCQRS.Data;
-using GamePlayerCQRS.Models;
-using GamePlayerCQRS.Models.Interfaces;
-using GamePlayerCQRS.Models.ValueObjects;
+using CQRS_mediatR.Application.Interfaces;
+using CQRS_mediatR.Data;
+using CQRS_mediatR.Domain;
+using CQRS_mediatR.Domain.ValueObjects;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 
-namespace GamePlayerCQRS.Repository;
+namespace CQRS_mediatR.Repository;
 
 public class GamePlayerRepository(GamePlayerDbContext context) : IGamePlayerRepository
 {
-    public readonly GamePlayerDbContext _context = context;
-
-    public async Task<Result<Guid>> InsertPlayerAsync(GamePlayer player)
+    public async Task<Guid> InsertPlayerAsync(GamePlayer player)
     {
-        _context.GamePlayers.Add(player);
+        context.GamePlayers.Add(player);
 
-        await _context.SaveChangesAsync();
+        await context.SaveChangesAsync();
 
-        return Result.Success(player.Id);
+        return player.Id;
     }
 
-    public async Task<Result<IEnumerable<GamePlayer>>> GetActivePlayersAsync()
+    public async Task<IEnumerable<GamePlayer>> GetActivePlayersAsync()
     {
-        try
-        {
-            var activePlayers = await _context.GamePlayers
-                .Where(gp => gp.Status == PlayerStatus.Active) // Or g => EF.Property<PlayerStatus>(g, "Status")
-                .ToListAsync();
+        var activePlayers = await context.GamePlayers
+            .Where(gp => gp.Status == PlayerStatus.Active) // Or g => EF.Property<PlayerStatus>(g, "Status")
+            .ToListAsync();
 
-            return Result.Success<IEnumerable<GamePlayer>>(activePlayers);
-        }
-        catch (Exception ex)
-
-        {
-            return Result.Failure<IEnumerable<GamePlayer>>($"Error to get active player: {ex.Message}");
-        }
+        return activePlayers ?? Enumerable.Empty<GamePlayer>();
     }
 
     public Task<GamePlayer?> GetByIdAsync(Guid id)

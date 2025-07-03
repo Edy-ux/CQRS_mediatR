@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "S:\\CQRS\\CQRS_mediatR\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2A3CC3DB-E570-40CD-77D8-88CF47E286C7}|GamePlayerCQRS.csproj|s:\\cqrs\\cqrs_mediatr\\domain\\valueobjects\\playerstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2A3CC3DB-E570-40CD-77D8-88CF47E286C7}|GamePlayerCQRS.csproj|solutionrelative:domain\\valueobjects\\playerstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2A3CC3DB-E570-40CD-77D8-88CF47E286C7}|GamePlayerCQRS.csproj|s:\\cqrs\\cqrs_mediatr\\domain\\valueobjects\\playerrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2A3CC3DB-E570-40CD-77D8-88CF47E286C7}|GamePlayerCQRS.csproj|solutionrelative:domain\\valueobjects\\playerrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2A3CC3DB-E570-40CD-77D8-88CF47E286C7}|GamePlayerCQRS.csproj|s:\\cqrs\\cqrs_mediatr\\gameplayercqrs.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{2A3CC3DB-E570-40CD-77D8-88CF47E286C7}|GamePlayerCQRS.csproj|solutionrelative:gameplayercqrs.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PlayerStatus.cs",
+              "DocumentMoniker": "S:\\CQRS\\CQRS_mediatR\\Domain\\ValueObjects\\PlayerStatus.cs",
+              "RelativeDocumentMoniker": "Domain\\ValueObjects\\PlayerStatus.cs",
+              "ToolTip": "S:\\CQRS\\CQRS_mediatR\\Domain\\ValueObjects\\PlayerStatus.cs",
+              "RelativeToolTip": "Domain\\ValueObjects\\PlayerStatus.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-05T18:52:17.88Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PlayerRole.cs",
+              "DocumentMoniker": "S:\\CQRS\\CQRS_mediatR\\Domain\\ValueObjects\\PlayerRole.cs",
+              "RelativeDocumentMoniker": "Domain\\ValueObjects\\PlayerRole.cs",
+              "ToolTip": "S:\\CQRS\\CQRS_mediatR\\Domain\\ValueObjects\\PlayerRole.cs",
+              "RelativeToolTip": "Domain\\ValueObjects\\PlayerRole.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-05T18:52:14.756Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GamePlayerCQRS",
+              "DocumentMoniker": "S:\\CQRS\\CQRS_mediatR\\GamePlayerCQRS.csproj",
+              "RelativeDocumentMoniker": "GamePlayerCQRS.csproj",
+              "ToolTip": "S:\\CQRS\\CQRS_mediatR\\GamePlayerCQRS.csproj",
+              "RelativeToolTip": "GamePlayerCQRS.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-07-05T18:38:49.037Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

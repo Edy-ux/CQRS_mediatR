@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hTw3v8cVYE4=",
+  "dgSpecHash": "xAlgPbrnTv0=",
   "success": true,
-  "projectFilePath": "C:\\usr\\.NET\\GamePlayerCQRS\\GamePlayerCQRS.csproj",
+  "projectFilePath": "S:\\CQRS\\CQRS_mediatR\\CQRS_mediatR.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Adm\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\Adm\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
@@ -36,9 +36,13 @@
     "C:\\Users\\Adm\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\9.0.6\\microsoft.extensions.caching.abstractions.9.0.6.nupkg.sha512",
     "C:\\Users\\Adm\\.nuget\\packages\\microsoft.extensions.caching.memory\\9.0.6\\microsoft.extensions.caching.memory.9.0.6.nupkg.sha512",
     "C:\\Users\\Adm\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\9.0.6\\microsoft.extensions.configuration.abstractions.9.0.6.nupkg.sha512",
+    "C:\\Users\\Adm\\.nuget\\packages\\microsoft.extensions.configuration.binder\\9.0.0\\microsoft.extensions.configuration.binder.9.0.0.nupkg.sha512",
     "C:\\Users\\Adm\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\9.0.6\\microsoft.extensions.dependencyinjection.9.0.6.nupkg.sha512",
     "C:\\Users\\Adm\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\9.0.6\\microsoft.extensions.dependencyinjection.abstractions.9.0.6.nupkg.sha512",
     "C:\\Users\\Adm\\.nuget\\packages\\microsoft.extensions.dependencymodel\\9.0.6\\microsoft.extensions.dependencymodel.9.0.6.nupkg.sha512",
+    "C:\\Users\\Adm\\.nuget\\packages\\microsoft.extensions.diagnostics.abstractions\\9.0.0\\microsoft.extensions.diagnostics.abstractions.9.0.0.nupkg.sha512",
+    "C:\\Users\\Adm\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\9.0.0\\microsoft.extensions.fileproviders.abstractions.9.0.0.nupkg.sha512",
+    "C:\\Users\\Adm\\.nuget\\packages\\microsoft.extensions.hosting.abstractions\\9.0.0\\microsoft.extensions.hosting.abstractions.9.0.0.nupkg.sha512",
     "C:\\Users\\Adm\\.nuget\\packages\\microsoft.extensions.logging\\9.0.6\\microsoft.extensions.logging.9.0.6.nupkg.sha512",
     "C:\\Users\\Adm\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\9.0.6\\microsoft.extensions.logging.abstractions.9.0.6.nupkg.sha512",
     "C:\\Users\\Adm\\.nuget\\packages\\microsoft.extensions.options\\9.0.6\\microsoft.extensions.options.9.0.6.nupkg.sha512",
@@ -60,6 +64,15 @@
     "C:\\Users\\Adm\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "C:\\Users\\Adm\\.nuget\\packages\\mono.texttemplating\\3.0.0\\mono.texttemplating.3.0.0.nupkg.sha512",
     "C:\\Users\\Adm\\.nuget\\packages\\newtonsoft.json\\7.0.1\\newtonsoft.json.7.0.1.nupkg.sha512",
+    "C:\\Users\\Adm\\.nuget\\packages\\serilog\\4.2.0\\serilog.4.2.0.nupkg.sha512",
+    "C:\\Users\\Adm\\.nuget\\packages\\serilog.aspnetcore\\9.0.0\\serilog.aspnetcore.9.0.0.nupkg.sha512",
+    "C:\\Users\\Adm\\.nuget\\packages\\serilog.extensions.hosting\\9.0.0\\serilog.extensions.hosting.9.0.0.nupkg.sha512",
+    "C:\\Users\\Adm\\.nuget\\packages\\serilog.extensions.logging\\9.0.0\\serilog.extensions.logging.9.0.0.nupkg.sha512",
+    "C:\\Users\\Adm\\.nuget\\packages\\serilog.formatting.compact\\3.0.0\\serilog.formatting.compact.3.0.0.nupkg.sha512",
+    "C:\\Users\\Adm\\.nuget\\packages\\serilog.settings.configuration\\9.0.0\\serilog.settings.configuration.9.0.0.nupkg.sha512",
+    "C:\\Users\\Adm\\.nuget\\packages\\serilog.sinks.console\\6.0.0\\serilog.sinks.console.6.0.0.nupkg.sha512",
+    "C:\\Users\\Adm\\.nuget\\packages\\serilog.sinks.debug\\3.0.0\\serilog.sinks.debug.3.0.0.nupkg.sha512",
+    "C:\\Users\\Adm\\.nuget\\packages\\serilog.sinks.file\\6.0.0\\serilog.sinks.file.6.0.0.nupkg.sha512",
     "C:\\Users\\Adm\\.nuget\\packages\\swashbuckle\\5.6.0\\swashbuckle.5.6.0.nupkg.sha512",
     "C:\\Users\\Adm\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\9.0.1\\swashbuckle.aspnetcore.swagger.9.0.1.nupkg.sha512",
     "C:\\Users\\Adm\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\9.0.1\\swashbuckle.aspnetcore.swaggergen.9.0.1.nupkg.sha512",
@@ -105,10 +118,10 @@
     {
       "code": "NU1608",
       "level": "Warning",
-      "message": "Detected package version outside of dependency constraint: MediatR.Extensions.Microsoft.DependencyInjection 11.1.0 requires MediatR (>= 11.0.0 && < 12.0.0) but version MediatR 12.5.0 was resolved.",
-      "projectPath": "C:\\usr\\.NET\\GamePlayerCQRS\\GamePlayerCQRS.csproj",
+      "message": "Versão detectada do pacote fora da restrição de dependência: MediatR.Extensions.Microsoft.DependencyInjection 11.1.0 requer MediatR (>= 11.0.0 && < 12.0.0), mas a versão MediatR 12.5.0 foi resolvida.",
+      "projectPath": "S:\\CQRS\\CQRS_mediatR\\CQRS_mediatR.csproj",
       "warningLevel": 1,
-      "filePath": "C:\\usr\\.NET\\GamePlayerCQRS\\GamePlayerCQRS.csproj",
+      "filePath": "S:\\CQRS\\CQRS_mediatR\\CQRS_mediatR.csproj",
       "libraryId": "MediatR",
       "targetGraphs": [
         "net9.0"
@@ -117,10 +130,10 @@
     {
       "code": "NU1701",
       "level": "Warning",
-      "message": "Package 'Microsoft.AspNet.WebApi.Client 4.0.20710' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net9.0'. This package may not be fully compatible with your project.",
-      "projectPath": "C:\\usr\\.NET\\GamePlayerCQRS\\GamePlayerCQRS.csproj",
+      "message": "O pacote 'Microsoft.AspNet.WebApi.Client 4.0.20710' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' em vez da estrutura de destino do projeto 'net9.0'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "projectPath": "S:\\CQRS\\CQRS_mediatR\\CQRS_mediatR.csproj",
       "warningLevel": 1,
-      "filePath": "C:\\usr\\.NET\\GamePlayerCQRS\\GamePlayerCQRS.csproj",
+      "filePath": "S:\\CQRS\\CQRS_mediatR\\CQRS_mediatR.csproj",
       "libraryId": "Microsoft.AspNet.WebApi.Client",
       "targetGraphs": [
         "net9.0"
@@ -129,10 +142,10 @@
     {
       "code": "NU1701",
       "level": "Warning",
-      "message": "Package 'Microsoft.AspNet.WebApi.Core 4.0.20710' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net9.0'. This package may not be fully compatible with your project.",
-      "projectPath": "C:\\usr\\.NET\\GamePlayerCQRS\\GamePlayerCQRS.csproj",
+      "message": "O pacote 'Microsoft.AspNet.WebApi.Core 4.0.20710' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' em vez da estrutura de destino do projeto 'net9.0'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "projectPath": "S:\\CQRS\\CQRS_mediatR\\CQRS_mediatR.csproj",
       "warningLevel": 1,
-      "filePath": "C:\\usr\\.NET\\GamePlayerCQRS\\GamePlayerCQRS.csproj",
+      "filePath": "S:\\CQRS\\CQRS_mediatR\\CQRS_mediatR.csproj",
       "libraryId": "Microsoft.AspNet.WebApi.Core",
       "targetGraphs": [
         "net9.0"
@@ -141,10 +154,10 @@
     {
       "code": "NU1701",
       "level": "Warning",
-      "message": "Package 'Microsoft.AspNet.WebApi.WebHost 4.0.20710' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net9.0'. This package may not be fully compatible with your project.",
-      "projectPath": "C:\\usr\\.NET\\GamePlayerCQRS\\GamePlayerCQRS.csproj",
+      "message": "O pacote 'Microsoft.AspNet.WebApi.WebHost 4.0.20710' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' em vez da estrutura de destino do projeto 'net9.0'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "projectPath": "S:\\CQRS\\CQRS_mediatR\\CQRS_mediatR.csproj",
       "warningLevel": 1,
-      "filePath": "C:\\usr\\.NET\\GamePlayerCQRS\\GamePlayerCQRS.csproj",
+      "filePath": "S:\\CQRS\\CQRS_mediatR\\CQRS_mediatR.csproj",
       "libraryId": "Microsoft.AspNet.WebApi.WebHost",
       "targetGraphs": [
         "net9.0"
@@ -153,10 +166,10 @@
     {
       "code": "NU1701",
       "level": "Warning",
-      "message": "Package 'Microsoft.Net.Http 2.0.20710' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net9.0'. This package may not be fully compatible with your project.",
-      "projectPath": "C:\\usr\\.NET\\GamePlayerCQRS\\GamePlayerCQRS.csproj",
+      "message": "O pacote 'Microsoft.Net.Http 2.0.20710' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' em vez da estrutura de destino do projeto 'net9.0'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "projectPath": "S:\\CQRS\\CQRS_mediatR\\CQRS_mediatR.csproj",
       "warningLevel": 1,
-      "filePath": "C:\\usr\\.NET\\GamePlayerCQRS\\GamePlayerCQRS.csproj",
+      "filePath": "S:\\CQRS\\CQRS_mediatR\\CQRS_mediatR.csproj",
       "libraryId": "Microsoft.Net.Http",
       "targetGraphs": [
         "net9.0"
@@ -165,10 +178,10 @@
     {
       "code": "NU1701",
       "level": "Warning",
-      "message": "Package 'Microsoft.Web.Infrastructure 1.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net9.0'. This package may not be fully compatible with your project.",
-      "projectPath": "C:\\usr\\.NET\\GamePlayerCQRS\\GamePlayerCQRS.csproj",
+      "message": "O pacote 'Microsoft.Web.Infrastructure 1.0.0' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' em vez da estrutura de destino do projeto 'net9.0'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "projectPath": "S:\\CQRS\\CQRS_mediatR\\CQRS_mediatR.csproj",
       "warningLevel": 1,
-      "filePath": "C:\\usr\\.NET\\GamePlayerCQRS\\GamePlayerCQRS.csproj",
+      "filePath": "S:\\CQRS\\CQRS_mediatR\\CQRS_mediatR.csproj",
       "libraryId": "Microsoft.Web.Infrastructure",
       "targetGraphs": [
         "net9.0"
@@ -177,10 +190,10 @@
     {
       "code": "NU1701",
       "level": "Warning",
-      "message": "Package 'Newtonsoft.Json 7.0.1' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net9.0'. This package may not be fully compatible with your project.",
-      "projectPath": "C:\\usr\\.NET\\GamePlayerCQRS\\GamePlayerCQRS.csproj",
+      "message": "O pacote 'Newtonsoft.Json 7.0.1' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' em vez da estrutura de destino do projeto 'net9.0'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "projectPath": "S:\\CQRS\\CQRS_mediatR\\CQRS_mediatR.csproj",
       "warningLevel": 1,
-      "filePath": "C:\\usr\\.NET\\GamePlayerCQRS\\GamePlayerCQRS.csproj",
+      "filePath": "S:\\CQRS\\CQRS_mediatR\\CQRS_mediatR.csproj",
       "libraryId": "Newtonsoft.Json",
       "targetGraphs": [
         "net9.0"
@@ -189,10 +202,10 @@
     {
       "code": "NU1701",
       "level": "Warning",
-      "message": "Package 'Swashbuckle.Core 5.6.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net9.0'. This package may not be fully compatible with your project.",
-      "projectPath": "C:\\usr\\.NET\\GamePlayerCQRS\\GamePlayerCQRS.csproj",
+      "message": "O pacote 'Swashbuckle.Core 5.6.0' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' em vez da estrutura de destino do projeto 'net9.0'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "projectPath": "S:\\CQRS\\CQRS_mediatR\\CQRS_mediatR.csproj",
       "warningLevel": 1,
-      "filePath": "C:\\usr\\.NET\\GamePlayerCQRS\\GamePlayerCQRS.csproj",
+      "filePath": "S:\\CQRS\\CQRS_mediatR\\CQRS_mediatR.csproj",
       "libraryId": "Swashbuckle.Core",
       "targetGraphs": [
         "net9.0"
@@ -201,10 +214,10 @@
     {
       "code": "NU1701",
       "level": "Warning",
-      "message": "Package 'WebActivatorEx 2.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net9.0'. This package may not be fully compatible with your project.",
-      "projectPath": "C:\\usr\\.NET\\GamePlayerCQRS\\GamePlayerCQRS.csproj",
+      "message": "O pacote 'WebActivatorEx 2.0.0' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' em vez da estrutura de destino do projeto 'net9.0'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "projectPath": "S:\\CQRS\\CQRS_mediatR\\CQRS_mediatR.csproj",
       "warningLevel": 1,
-      "filePath": "C:\\usr\\.NET\\GamePlayerCQRS\\GamePlayerCQRS.csproj",
+      "filePath": "S:\\CQRS\\CQRS_mediatR\\CQRS_mediatR.csproj",
       "libraryId": "WebActivatorEx",
       "targetGraphs": [
         "net9.0"

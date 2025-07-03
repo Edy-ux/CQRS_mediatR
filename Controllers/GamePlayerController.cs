@@ -1,14 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
 
-using GamePlayerCQRS.Models;
+using CQRS_mediatR.Domain;
 using MediatR;
-using GamePlayerCQRS.Models.DTOs;
-using GamePlayerCQRS.Features.Player.commands;
-using GamePlayerCQRS.Models.ValueObjects;
-using GamePlayerCQRS.Data;
-using Microsoft.EntityFrameworkCore;
+using CQRS_mediatR.Application.DTOs;
+using CQRS_mediatR.Application.Features.Player.commands;
+using CQRS_mediatR.Domain.ValueObjects;
+using CQRS_mediatR.Application.Features.Player.Queries;
 
-namespace GamePlayerCQRS.Controllers;
+namespace CQRS_mediatR.Controllers;
 
 [ApiController]
 [Route("api/v1/[controller]")]
@@ -16,30 +15,26 @@ namespace GamePlayerCQRS.Controllers;
 public class GamePlayerController : ControllerBase
 {
     private readonly ILogger<GamePlayerController> _logger;
-    private readonly ISender _sender;
-    private readonly GamePlayerDbContext _context;
-    public GamePlayerController(ILogger<GamePlayerController> logger, ISender sender, GamePlayerDbContext context)
+    private readonly IMediator _sender;
+    public GamePlayerController(ILogger<GamePlayerController> logger, IMediator sender)
     {
         _logger = logger;
         _sender = sender;
-        _context = context;
+
     }
     [HttpGet("all")]
-    public IActionResult GetAllPlayers() // TODO: Implementar com MediatR Query
+    public async Task<IActionResult> GetAllPlayers() // TODO: Implementar com MediatR Query
     {
         throw new NotImplementedException();
     }
+
     [HttpGet("active")]
     public async Task<IActionResult> GetActivePlayers()
     {
         try
         {
-            // #region ClientWhere
-            var activePlayers = await _context.GamePlayers
-              .Where(gp => gp.Status == PlayerStatus.Active) // Or g => EF.Property<PlayerStatus>(g, "Status")
-              .ToListAsync();
-            // #endregion
-            return Ok(activePlayers);
+            var result = await _sender.Send(new GetActivePlayersQuery());
+            return Ok(result.Value);
         }
         catch (Exception ex)
         {
@@ -55,26 +50,36 @@ public class GamePlayerController : ControllerBase
     }
 
     [HttpPost("create")]
-    public async Task<IActionResult> CreatePlayer(CreateGamePlayerRequest request) // TODO: Implementar com MediatR Command
+    public async Task<IActionResult> CreatePlayer(CreateGamePlayerRequest request)
     {
-
         try
         {
-            var player = await _sender.Send(new CreatePlayerCommand(request));
+            var response = await _sender.Send(new CreatePlayerCommand(request));
+
+            if (response.IsFailure)
+            {
+                return BadRequest(new ProblemDetails
+                {
+                    Title = "Erro de validação",
+                    Detail = response.Error
+                });
+            }
 
             return CreatedAtAction(nameof(CreatePlayer), new GamePlayerResponse
             {
-                Id = player.Value,
+                Id = response.Value,
                 Name = request.Name,
                 Email = request.Email,
-                Role = request.Role ?? "Player",
+                Role = request.Role,
                 Status = PlayerStatus.Active.Value,
             });
+
+
         }
         catch (Exception ex)
         {
             _logger.LogError(ex.Message);
-            return BadRequest(ex.Message);
+            return StatusCode(500, new ProblemDetails { Title = "Error during player creation", Detail = ex.Message });
         }
 
     }
