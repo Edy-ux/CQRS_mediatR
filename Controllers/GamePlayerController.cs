@@ -1,5 +1,5 @@
+using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
-
 using CQRS_mediatR.Domain;
 using MediatR;
 using CQRS_mediatR.Application.DTOs;
@@ -11,25 +11,25 @@ namespace CQRS_mediatR.Controllers;
 
 [ApiController]
 [Route("api/v1/[controller]")]
-
 public class GamePlayerController : ControllerBase
 {
     private readonly ILogger<GamePlayerController> _logger;
-    private readonly IMediator _sender;
+    private readonly ISender _sender;
+
     public GamePlayerController(ILogger<GamePlayerController> logger, IMediator sender)
     {
         _logger = logger;
         _sender = sender;
-
     }
+
     [HttpGet("all")]
-    public async Task<IActionResult> GetAllPlayers() // TODO: Implementar com MediatR Query
+    public async Task<IActionResult> GetAll() // TODO: Implementar com MediatR Query
     {
         throw new NotImplementedException();
     }
 
     [HttpGet("active")]
-    public async Task<IActionResult> GetActivePlayers()
+    public async Task<IActionResult> GetActives()
     {
         try
         {
@@ -39,18 +39,19 @@ public class GamePlayerController : ControllerBase
         catch (Exception ex)
         {
             _logger.LogError(ex, "Erro ao buscar jogadores ativos");
-            return StatusCode(StatusCodes.Status500InternalServerError, new { message = "Acorreu um erro interno do servidor" });
+            return StatusCode(StatusCodes.Status500InternalServerError,
+                new { message = "Erro ao buscar jogadores ativos" });
         }
     }
+
     [HttpGet("{id}")]
     public IActionResult GetPlayerById(string id) // TODO: Implementar com MediatR Query
     {
         throw new NotImplementedException();
-
     }
 
     [HttpPost("create")]
-    public async Task<IActionResult> CreatePlayer(CreateGamePlayerRequest request)
+    public async Task<IActionResult> Create(CreateGamePlayerRequest request)
     {
         try
         {
@@ -65,27 +66,24 @@ public class GamePlayerController : ControllerBase
                 });
             }
 
-            return CreatedAtAction(nameof(CreatePlayer), new GamePlayerResponse
+            return CreatedAtAction(nameof(Create), new GamePlayerResponse
             {
                 Id = response.Value,
                 Name = request.Name,
                 Email = request.Email,
                 Role = request.Role,
-                Status = PlayerStatus.Active.Value,
+                Status = PlayerStatus.Active.ToString(),
             });
-
-
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex.Message);
+            _logger.LogError("Error during player creation");
             return StatusCode(500, new ProblemDetails { Title = "Error during player creation", Detail = ex.Message });
         }
-
     }
 
     [HttpPut("update/{id}")]
-    public IActionResult UpdatePlayer(int id, GamePlayer game) // TODO: Implementar com MediatR Command 
+    public IActionResult Update(int id, GamePlayer game) // TODO: Implementar com MediatR Command 
     {
         return Ok("Game Updated");
     }
@@ -95,6 +93,4 @@ public class GamePlayerController : ControllerBase
     {
         return Ok("Game Deleted");
     }
-
-
 }

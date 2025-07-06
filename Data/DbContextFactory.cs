@@ -8,7 +8,7 @@ public class GamePlayerDbContextFactory : IDesignTimeDbContextFactory<GamePlayer
     public GamePlayerDbContext CreateDbContext(string[] args)
     {
         var configuration = new ConfigurationBuilder()
-            .SetBasePath(Directory.GetCurrentDirectory()) // precisa ser o projeto que contém o appsettings.json
+            .SetBasePath(Directory.GetCurrentDirectory()) //BasePath precisa ser o projeto que contém o appsettings.json
             .AddJsonFile("appsettings.json")
             .Build();
 

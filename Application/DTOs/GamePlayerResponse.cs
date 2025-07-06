@@ -9,19 +9,21 @@ namespace CQRS_mediatR.Application.DTOs
         public string Email { get; set; } = string.Empty;
         public string Role { get; set; } = string.Empty;
         public string Status { get; set; } = string.Empty;
+        
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
     }
 
     public class GamePlayerDetailResponse
     {
-        public string Id { get; set; } = string.Empty;
+        public Guid Id { get; set; }
         public string Name { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
         public string Role { get; set; } = string.Empty;
         public string Status { get; set; } = string.Empty;
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
+        
         public bool IsActive { get; set; }
         public bool IsSuspended { get; set; }
         public bool IsInactive { get; set; }

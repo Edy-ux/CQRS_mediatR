@@ -1,4 +1,5 @@
 
+using CQRS_mediatR.Application.DTOs;
 using CSharpFunctionalExtensions;
 using CQRS_mediatR.Application.Interfaces;
 using CQRS_mediatR.Domain;
@@ -7,14 +8,13 @@ using CQRS_mediatR.Application.Features.Player.Queries;
 
 namespace CQRS_mediatR.Features.Player.Queries;
 
-public class GetActivePlayersQueryHandler(IGamePlayerRepository repository) : IRequestHandler<GetActivePlayersQuery, Result<IEnumerable<GamePlayer>>>
+public class GetActivePlayersQueryHandler(IGamePlayerRepository repository) : IRequestHandler<GetActivePlayersQuery, Result<IEnumerable<GamePlayerDetailResponse>>>
 
 {
-    private readonly IGamePlayerRepository _repository = repository;
 
-    public async Task<Result<IEnumerable<GamePlayer>>> Handle(GetActivePlayersQuery request, CancellationToken cancellationToken)
+    public async Task<Result<IEnumerable<GamePlayerDetailResponse>>> Handle(GetActivePlayersQuery request, CancellationToken cancellationToken)
     {
-        var players = await _repository.GetActivePlayersAsync();
+        var players = await repository.GetActivePlayersAsync();
         return Result.Success(players);
     }
 

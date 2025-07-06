@@ -2,24 +2,21 @@ using System;
 
 namespace CQRS_mediatR.Domain.ValueObjects
 {
-
-    public enum StatusType { Active, Inactive, Suspended }
-
-    public class PlayerStatus
+    public enum StatusType
     {
-        public string Value { get; private set; }
+        Active,
+        Inactive,
+        Suspended
+    }
 
-        private PlayerStatus(string value)
-        {
-            Value = value;
-        }
+    public record PlayerStatus
+    {
+        public StatusType Type { get; }
+        public static PlayerStatus Active => new(StatusType.Active);
+        public static PlayerStatus Inactive => new(StatusType.Inactive);
+        public static PlayerStatus Suspended => new(StatusType.Suspended);
 
-        public static PlayerStatus Active => new PlayerStatus(StatusType.Active.ToString());
-        public static PlayerStatus Inactive => new PlayerStatus(StatusType.Inactive.ToString());
-        public static PlayerStatus Suspended => new PlayerStatus(StatusType.Suspended.ToString());
-
-
-        private PlayerStatus() { }
+        private PlayerStatus(StatusType status) => Type = status;
 
         // Factory method para criar um novo status
         public static PlayerStatus Create(string status)
@@ -27,56 +24,14 @@ namespace CQRS_mediatR.Domain.ValueObjects
             if (string.IsNullOrWhiteSpace(status))
                 throw new ArgumentException("Status não pode ser vazio", nameof(status));
 
-            var normalizedStatus = status.Trim().ToLower();
-
-            switch (normalizedStatus)
-            {
-                case "active":
-                    return Active;
-                case "inactive":
-                    return Inactive;
-                case "suspended":
-                    return Suspended;
-                default:
-                    throw new ArgumentException($"Status '{status}' não é válido", nameof(status));
-            }
-        }
-
-        private StatusType GetStatusType() => Value.ToLower() switch
-        {
-            "active" => StatusType.Active,
-            "inactive" => StatusType.Inactive,
-            "suspended" => StatusType.Suspended,
-            _ => throw new InvalidOperationException()
-        };
-
-        public override bool Equals(object obj)
-        {
-            if (obj is PlayerStatus other)
-            {
-                return Value.Equals(other.Value, StringComparison.OrdinalIgnoreCase);
-            }
-            return false;
-        }
-
-        public override int GetHashCode()
-        {
-            return Value.ToLower().GetHashCode();
+            return Enum.TryParse<StatusType>(status, true, out var statusType)
+                ? new PlayerStatus(statusType)
+                : throw new ArgumentException($"Status '{status}' não é válido", nameof(status));
         }
 
         public override string ToString()
         {
-            return Value;
-        }
-
-        public static bool operator ==(PlayerStatus left, PlayerStatus right)
-        {
-            return EqualityComparer<PlayerStatus>.Default.Equals(left, right);
-        }
-
-        public static bool operator !=(PlayerStatus left, PlayerStatus right)
-        {
-            return !(left == right);
+            return Type.ToString();
         }
     }
 }

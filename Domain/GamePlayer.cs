@@ -1,4 +1,3 @@
-
 using CQRS_mediatR.Domain.Validators;
 using CQRS_mediatR.Domain.ValueObjects;
 
@@ -6,7 +5,6 @@ namespace CQRS_mediatR.Domain
 {
     public class GamePlayer
     {
-
         public Guid Id { get; private set; }
         public string Name { get; private set; } = string.Empty;
         public string Email { get; private set; } = string.Empty;
@@ -23,21 +21,29 @@ namespace CQRS_mediatR.Domain
         public bool IsSuspended => Status == PlayerStatus.Suspended;
         public bool IsInactive => Status == PlayerStatus.Inactive;
 
-        protected GamePlayer() { }
+
+        protected GamePlayer()
+        {
+        }
 
         // Factory method para criar um novo jogadors
         public static Result<GamePlayer> Create(string name, string email, string password, string role = "Player")
         {
             if (string.IsNullOrWhiteSpace(name))
-                return Result<GamePlayer>.Failure(string.Format("Nome não pode ser vazio: {0}", role));
+                return Result<GamePlayer>.Failure(string.Format("Nome não pode ser vazio: {0}", nameof(name)));
 
             if (string.IsNullOrWhiteSpace(email))
-                return Result<GamePlayer>.Failure(string.Format("Email não pode ser vazio: {0}", role));
+                return Result<GamePlayer>.Failure("Email não pode ser vazio");
 
             var playerRole = PlayerRole.Create(role);
 
-            if (!playerRole.IsValid)
-                return Result<GamePlayer>.Failure(string.Format(playerRole.Error!));
+            /*var value = Enum.GetName(playerRole.Type.GetType(), playerRole) ??
+                        throw new ArgumentException("Erro ao obter o valor do enum");*/
+
+            /*var formatedRole = playerRole with
+            {
+                Value = value
+            };*/
 
             return Result<GamePlayer>.Success(new GamePlayer
             {
@@ -45,7 +51,7 @@ namespace CQRS_mediatR.Domain
                 Name = name,
                 Email = email,
                 Password = password,
-                Role = PlayerRole.Create(role).Value,
+                Role = playerRole,
                 Status = PlayerStatus.Active,
                 CreatedAt = DateTime.UtcNow,
                 UpdatedAt = DateTime.UtcNow
@@ -86,7 +92,7 @@ namespace CQRS_mediatR.Domain
 
         public void ChangeRole(string newRole)
         {
-            Role = PlayerRole.Create(newRole).Value;
+            Role = PlayerRole.Create(newRole);
             UpdatedAt = DateTime.UtcNow;
         }
 
@@ -107,7 +113,5 @@ namespace CQRS_mediatR.Domain
             Status = PlayerStatus.Suspended;
             UpdatedAt = DateTime.UtcNow;
         }
-
-
     }
 }

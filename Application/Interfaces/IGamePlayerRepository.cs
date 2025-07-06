@@ -1,4 +1,5 @@
 
+using CQRS_mediatR.Application.DTOs;
 using CQRS_mediatR.Domain;
 
 namespace CQRS_mediatR.Application.Interfaces
@@ -7,6 +8,6 @@ namespace CQRS_mediatR.Application.Interfaces
     {
         Task<Guid> InsertPlayerAsync(GamePlayer player);
         Task<GamePlayer?> GetByIdAsync(Guid id);
-        Task<IEnumerable<GamePlayer>> GetActivePlayersAsync();
+        Task<IEnumerable<GamePlayerDetailResponse>> GetActivePlayersAsync();
     }
 }

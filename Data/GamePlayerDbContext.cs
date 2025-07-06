@@ -3,12 +3,14 @@ using CQRS_mediatR.Domain;
 using CQRS_mediatR.Domain.ValueObjects;
 
 namespace CQRS_mediatR.Data;
+
 public class GamePlayerDbContext : DbContext
 {
     public GamePlayerDbContext(DbContextOptions<CQRS_mediatR.Data.GamePlayerDbContext> options)
-       : base(options)
+        : base(options)
     {
     }
+
     public DbSet<GamePlayer> GamePlayers { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -49,11 +51,11 @@ public class GamePlayerDbContext : DbContext
                 .HasMaxLength(20)
                 .HasConversion(
                     // Converter do ValueObject para string (para salvar no banco)
-                    v => v.Value,
+                    v => v.ToString(),
                     // Converter da string para ValueObject (para carregar do banco)
-                    v => PlayerRole.Create(v).Value
-                        )
-                        .IsRequired();
+                    v => PlayerRole.Create(v)
+                )
+                .IsRequired();
 
             // ValueObject PlayerStatus - mapeado como string
             entity.Property(e => e.Status)
@@ -61,7 +63,7 @@ public class GamePlayerDbContext : DbContext
                 .HasMaxLength(20)
                 .HasConversion(
                     // Converter do ValueObject para string (para salvar no banco)
-                    v => v.Value,
+                    v => v.ToString(),
                     // Converter da string para ValueObject (para carregar do banco)
                     v => PlayerStatus.Create(v)
                 )

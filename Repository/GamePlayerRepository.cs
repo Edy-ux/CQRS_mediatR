@@ -1,4 +1,4 @@
-
+using CQRS_mediatR.Application.DTOs;
 using CSharpFunctionalExtensions;
 using CQRS_mediatR.Application.Interfaces;
 using CQRS_mediatR.Data;
@@ -19,13 +19,25 @@ public class GamePlayerRepository(GamePlayerDbContext context) : IGamePlayerRepo
         return player.Id;
     }
 
-    public async Task<IEnumerable<GamePlayer>> GetActivePlayersAsync()
+    public async Task<IEnumerable<GamePlayerDetailResponse>> GetActivePlayersAsync()
     {
         var activePlayers = await context.GamePlayers
-            .Where(gp => gp.Status == PlayerStatus.Active) // Or g => EF.Property<PlayerStatus>(g, "Status")
+            .Where(p => p.Status == PlayerStatus.Active) // Or g => 
             .ToListAsync();
 
-        return activePlayers ?? Enumerable.Empty<GamePlayer>();
+        return activePlayers.Select(player => new GamePlayerDetailResponse
+        {
+            Id = player.Id,
+            Name = player.Name,
+            Email = player.Email,
+            Role = player.Role.Value,
+            Status = player.Status.ToString(),
+            CreatedAt = player.CreatedAt,
+            UpdatedAt = player.UpdatedAt,
+            IsActive = player.Status == PlayerStatus.Active,
+            IsInactive = player.Status == PlayerStatus.Inactive,    
+            IsSuspended = player.Status == PlayerStatus.Suspended
+        });
     }
 
     public Task<GamePlayer?> GetByIdAsync(Guid id)

@@ -57,4 +57,17 @@ public class GamePlayerDbContextFactory : IDesignTimeDbContextFactory<GamePlayer
 A IDesignTimeDbContextFactory é a ponte entre o EF Core (que precisa criar DbContext no design-time) e sua aplicação (que tem configurações específicas). Ela diz ao EF exatamente como criar o DbContext quando não há container de DI disponível.
 É uma solução elegante que mantém a separação entre design-time e runtime, permitindo que o EF trabalhe independentemente da sua aplicação.
 
+## Uso de class x records
+
+**Records** 
+
+1. **Imutabilidade por padrão**: Records são imutáveis por padrão, o que é ideal para Value Objects como seu `PlayerStatus`
+2. **Implementação automática**: O `record` já implementa automaticamente:
+
+    - `Equals()`
+    - `GetHashCode()`
+    - Operadores `==` e `!=`
+    - `ToString()`
+
 #dotnet #csharp #dotnetdeveloper #developers #microsoft  #dotnetcore 
+
