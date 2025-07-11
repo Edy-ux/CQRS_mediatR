@@ -1,7 +1,10 @@
+using System.Text.Json.Serialization;
 using CQRS_mediatR.Domain.Validators;
+using CQRS_mediatR.Domain.Validators.Exceptions;
 
 namespace CQRS_mediatR.Domain.ValueObjects
 {
+    [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum RoleType
     {
         Player,
@@ -11,34 +14,27 @@ namespace CQRS_mediatR.Domain.ValueObjects
     }
 
     public record PlayerRole
+
     {
-        public static RoleType Type { get; private set; }
+        public RoleType Value { get; }
+        public bool IsAdmin => Value is RoleType.Admin;
+        public bool IsModerator => Value is RoleType.Moderator;
+        public bool IsVip => Value is RoleType.Vip;
+        public bool IsPlayer => Value is RoleType.Player;
 
-        public string Value { get;} = Type.ToString();
+        private PlayerRole(RoleType type) => Value = type;
 
-        public bool IsAdmin => Type == RoleType.Admin;
-        public bool IsModerator => Type == RoleType.Moderator;
-        public bool IsVip => Type == RoleType.Vip;
-        public bool IsPlayer => Type == RoleType.Player;
-
-        private PlayerRole(RoleType type) => Type = type;
-
-
-        //factory  method for create a new PlayerRole
         public static PlayerRole Create(string role)
         {
             if (string.IsNullOrWhiteSpace(role))
-                throw new ArgumentException("Role cannot be empty", nameof(role));
+                throw new GamePlayerValidationException("Role cannot be empty");
 
             return Enum.TryParse<RoleType>(role, true, out var roleType)
                 ? new PlayerRole(roleType)
-                : throw new ArgumentException($"Role '{role}' is not valid", nameof(role));
+                : throw new GamePlayerValidationException($"Role '{role}' is not valid. Roles allowed: Player Moderator, Admin");
         }
 
-        public override string ToString()
-        {
-            return Type.ToString();
-        }
+        public override string ToString() => Value.ToString();
 
         /*public static bool operator ==(PlayerRole left, PlayerRole right)
         {

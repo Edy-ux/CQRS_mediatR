@@ -1,6 +1,6 @@
 
 
-namespace CQRS_mediatR.Application.Interfaces;
+namespace CQRS_mediatR.Domain.Interfaces;
 
 public interface IEmailSender
 {

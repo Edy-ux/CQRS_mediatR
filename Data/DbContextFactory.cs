@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
 
+namespace CQRS_mediatR.Data;
 public class GamePlayerDbContextFactory : IDesignTimeDbContextFactory<GamePlayerDbContext>
 {
     public GamePlayerDbContext CreateDbContext(string[] args)

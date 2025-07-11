@@ -1,4 +1,4 @@
-using CQRS_mediatR.Application.Interfaces;
+using CQRS_mediatR.Domain.Interfaces;
 using MediatR;
 
 namespace CQRS_mediatR.Application.Features.Player.Notifications;

@@ -1,7 +1,7 @@
 
 using CQRS_mediatR.Application.DTOs;
 using CSharpFunctionalExtensions;
-using CQRS_mediatR.Application.Interfaces;
+using CQRS_mediatR.Domain.Interfaces;
 using CQRS_mediatR.Domain;
 using MediatR;
 using CQRS_mediatR.Application.Features.Player.Queries;

@@ -5,7 +5,7 @@ namespace CQRS_mediatR.Application.DTOs
     public class CreateGamePlayerRequest
     {
         [Required(ErrorMessage = "Nome é obrigatório")]
-        [StringLength(100, MinimumLength = 2, ErrorMessage = "Nome deve ter entre 2 e 100 caracteres")]
+        [StringLength(60, MinimumLength = 2, ErrorMessage = "Nome deve ter entre 2 e 100 caracteres")]
         public string Name { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Email é obrigatório")]
@@ -13,7 +13,11 @@ namespace CQRS_mediatR.Application.DTOs
         public string Email { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Senha é obrigatória")]
-        [StringLength(50, MinimumLength = 6, ErrorMessage = "Senha deve ter entre 6 e 50 caracteres")]
+        [StringLength(20, MinimumLength = 6, ErrorMessage = "Senha deve ter entre 6 e 50 caracteres")]
+        [RegularExpression(
+        @"^(?=.*\d)(?=.*[\W_]).{6,}$",
+        ErrorMessage = "A senha deve conter ao menos 6 caracteres, incluindo um número e um caractere especial ex: @,#,%..")]
+
         public string Password { get; set; } = string.Empty;
 
         [StringLength(20, ErrorMessage = "Role deve ter no máximo 20 caracteres")]

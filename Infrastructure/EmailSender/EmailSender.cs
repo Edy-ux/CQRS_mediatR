@@ -1,6 +1,6 @@
 
 
-using CQRS_mediatR.Application.Interfaces;
+using CQRS_mediatR.Domain.Interfaces;
 
 namespace CQRS_mediatR.Infrastructure.EmailSender
 {

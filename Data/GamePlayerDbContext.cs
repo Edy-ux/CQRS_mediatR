@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using CQRS_mediatR.Domain;
+using CQRS_mediatR.Domain.Entity;
 using CQRS_mediatR.Domain.ValueObjects;
 
 namespace CQRS_mediatR.Data;
@@ -59,7 +59,8 @@ public class GamePlayerDbContext : DbContext
 
             // ValueObject PlayerStatus - mapeado como string
             entity.Property(e => e.Status)
-                .HasColumnName("Status")
+                .HasColumnName(nameof(GamePlayer.Status))
+                .HasDefaultValue(PlayerStatus.Active)
                 .HasMaxLength(20)
                 .HasConversion(
                     // Converter do ValueObject para string (para salvar no banco)

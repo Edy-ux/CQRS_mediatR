@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CQRS_mediatR")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2c0bce2081f1db30ce5e46eb7a9dfa72611dd0e5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+eaebb7cbdf347846d02a8feee6798ec9cfe7f3d7")]
 [assembly: System.Reflection.AssemblyProductAttribute("CQRS_mediatR")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CQRS_mediatR")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

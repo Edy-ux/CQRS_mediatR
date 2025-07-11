@@ -1,11 +1,10 @@
-using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
-using CQRS_mediatR.Domain;
 using MediatR;
 using CQRS_mediatR.Application.DTOs;
 using CQRS_mediatR.Application.Features.Player.commands;
 using CQRS_mediatR.Domain.ValueObjects;
 using CQRS_mediatR.Application.Features.Player.Queries;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace CQRS_mediatR.Controllers;
 
@@ -51,46 +50,38 @@ public class GamePlayerController : ControllerBase
     }
 
     [HttpPost("create")]
-    public async Task<IActionResult> Create(CreateGamePlayerRequest request)
+    public async Task<Results<Created<GamePlayerResponse>, BadRequest<ProblemDetails>>> Create(
+        CreateGamePlayerRequest request)
     {
-        try
-        {
-            var response = await _sender.Send(new CreatePlayerCommand(request));
+        var response = await _sender.Send(new CreatePlayerCommand(request));
 
-            if (response.IsFailure)
+        return response.Match<Results<Created<GamePlayerResponse>, BadRequest<ProblemDetails>>>(
+            playerId => TypedResults.Created($"/player/{playerId}", new GamePlayerResponse
             {
-                return BadRequest(new ProblemDetails
-                {
-                    Title = "Erro de validação",
-                    Detail = response.Error
-                });
-            }
-
-            return CreatedAtAction(nameof(Create), new GamePlayerResponse
-            {
-                Id = response.Value,
+                Id = playerId,
                 Name = request.Name,
                 Email = request.Email,
                 Role = request.Role,
-                Status = PlayerStatus.Active.ToString(),
-            });
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError("Error during player creation");
-            return StatusCode(500, new ProblemDetails { Title = "Error during player creation", Detail = ex.Message });
-        }
+                Status = PlayerStatus.Active.ToString()
+            }),
+            error =>
+            {
+                _logger.LogError("Error during player creation");
+                return TypedResults.BadRequest(new ProblemDetails
+                { Detail = error.message, Title = "Domain Errors", Type = error.errorType.ToString(), Status = StatusCodes.Status400BadRequest });
+            }
+        );
     }
 
     [HttpPut("update/{id}")]
-    public IActionResult Update(int id, GamePlayer game) // TODO: Implementar com MediatR Command 
+    public IActionResult Update(int id, CreateGamePlayerRequest game) // TODO: Implementar com MediatR Command 
     {
-        return Ok("Game Updated");
+        throw new NotImplementedException();
     }
 
     [HttpDelete("delete/{id}")]
     public IActionResult DeletePlayer(int id) // TODO: Implementar com MediatR Command
     {
-        return Ok("Game Deleted");
+        throw new NotImplementedException();
     }
 }

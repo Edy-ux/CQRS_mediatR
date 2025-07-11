@@ -1,4 +1,6 @@
-using CQRS_mediatR.Domain;
+
+
+using CQRS_mediatR.Domain.ValueObjects;
 
 namespace CQRS_mediatR.Application.DTOs
 {
@@ -9,7 +11,7 @@ namespace CQRS_mediatR.Application.DTOs
         public string Email { get; set; } = string.Empty;
         public string Role { get; set; } = string.Empty;
         public string Status { get; set; } = string.Empty;
-        
+
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
     }
@@ -19,11 +21,11 @@ namespace CQRS_mediatR.Application.DTOs
         public Guid Id { get; set; }
         public string Name { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
-        public string Role { get; set; } = string.Empty;
+        public PlayerRole Role { get; set; }
         public string Status { get; set; } = string.Empty;
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
-        
+
         public bool IsActive { get; set; }
         public bool IsSuspended { get; set; }
         public bool IsInactive { get; set; }
@@ -32,7 +34,7 @@ namespace CQRS_mediatR.Application.DTOs
     public class GamePlayerListResponse
     {
 
-        public IEnumerable<GamePlayer> Players { get; set; }
+        public IEnumerable<GamePlayerResponse> Players { get; set; }
 
     }
 
@@ -58,12 +60,6 @@ namespace CQRS_mediatR.Application.DTOs
         public string Status { get; set; } = string.Empty;
         public int Count { get; set; }
         public double Percentage { get; set; }
-    }
-
-    public class CreateGamePlayerResponse
-    {
-        public string Id { get; set; } = string.Empty;
-        public string Message { get; set; } = "Jogador criado com sucesso";
     }
 
     public class UpdateGamePlayerResponse

@@ -1,4 +1,3 @@
-
 # Para rodar essa aplicação execute
 
 ```cmd
@@ -57,17 +56,85 @@ public class GamePlayerDbContextFactory : IDesignTimeDbContextFactory<GamePlayer
 A IDesignTimeDbContextFactory é a ponte entre o EF Core (que precisa criar DbContext no design-time) e sua aplicação (que tem configurações específicas). Ela diz ao EF exatamente como criar o DbContext quando não há container de DI disponível.
 É uma solução elegante que mantém a separação entre design-time e runtime, permitindo que o EF trabalhe independentemente da sua aplicação.
 
-## Uso de class x records
+##  Conhecimentos
+
+### Uso de class x records
 
 **Records** 
 
-1. **Imutabilidade por padrão**: Records são imutáveis por padrão, o que é ideal para Value Objects como seu `PlayerStatus`
+1. **Imutabilidade por padrão**: Records são imutáveis por padrão, o que é ideal para Value Objects com o `PlayerStatus`
 2. **Implementação automática**: O `record` já implementa automaticamente:
 
     - `Equals()`
     - `GetHashCode()`
-    - Operadores `==` e `!=`
+    -  Operadores `==` e `!=`
     - `ToString()`
+
+
+🏆 **Conclusão:**
+
+Nesse Projeto usamos Duas abordagem para tratamento de erros X `Exeption`: 
+
+- OneOf para business logic
+- Middleware para exceções técnicas
+- Separação clara de responsabilidades
+- É considerada uma best practice moderna em .NET, especialmente para APIs robustas e   manutenível
+- 
+✅ Domínio: Exceções para regras de negócio
+✅ Application: OneOf para controle de fluxo
+✅ Infrastructure: Middleware para exceções técnicas
+
+
+Domain (Exception) →  Application (OneOf) → Controller (Match) → Response
+        ↓                    ↓                       ↓
+   Business Rules       Error Handling            HTTP Response
 
 #dotnet #csharp #dotnetdeveloper #developers #microsoft  #dotnetcore 
 
+
+
+/src
+ ├── Domain
+ │   ├── Entities
+ │   │   └── GamePlayer.cs
+ │   ├── Exceptions
+ │   │   ├── GamePlayerValidationException.cs
+ │   │   ├── GamePlayerRepositoryException.cs
+ │   │   └── DatabaseException.cs
+ │   ├── ValueObjects
+ │   └── Enums
+ │       └── TypeError.cs
+ │   └── Interfaces
+ │       └── IGamePlayerRepository.cs
+ │
+ ├── Application
+ │   ├── Requests
+ │   │   └── CreateGamePlayerRequest.cs
+ │   ├── Commands
+ │   │   └── CreatePlayer
+ │   │        ├── CreatePlayerCommand.cs
+ │   │        ├── CreatePlayerCommandHandler.cs
+ │   │        └── CreatePlayerNotification.cs
+ │   ├── Responses
+ │   │   └── CreationPlayerError.cs
+ │   ├── Validators
+ │   │   └── CreateGamePlayerRequestValidator.cs
+ │   └── Common
+ │       └── Maybe, Result, etc (se criar tipos funcionais personalizados)
+ │
+ ├── Infrastructure
+ │   ├── Persistence
+ │   │   ├── GamePlayerDbContext.cs
+ │   │   └── Repositories
+ │   │       └── GamePlayerRepository.cs
+ │   ├── Middleware
+ │   │   └── ExceptionHandlingMiddleware.cs
+ │   └── Configurations
+ │       └── GamePlayerEntityTypeConfiguration.cs (se usar FluentAPI separada)
+ │
+ ├── API
+ │   ├── Controllers
+ │   │   └── GamePlayerController.cs
+ │   ├── Extensions
+ │   │   └── DependencyInjection.cs
+ │   └── Program.cs / Startup.cs

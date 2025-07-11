@@ -18,15 +18,15 @@ namespace CQRS_mediatR.Domain.ValueObjects
 
         private PlayerStatus(StatusType status) => Type = status;
 
-        // Factory method para criar um novo status
+
         public static PlayerStatus Create(string status)
         {
             if (string.IsNullOrWhiteSpace(status))
-                throw new ArgumentException("Status não pode ser vazio", nameof(status));
+                throw new ArgumentException("Status cannot be empty", nameof(status));
 
             return Enum.TryParse<StatusType>(status, true, out var statusType)
                 ? new PlayerStatus(statusType)
-                : throw new ArgumentException($"Status '{status}' não é válido", nameof(status));
+                : throw new ArgumentException($"Status '{status}' is not valid", nameof(status));
         }
 
         public override string ToString()
