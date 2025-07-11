@@ -89,6 +89,10 @@ Domain (Exception) →  Application (OneOf) → Controller (Match) → Response
         ↓                    ↓                       ↓
    Business Rules       Error Handling            HTTP Response
 
+🧭 Caminho do fluxo normal (sem exceção):
+
+Controller → MediatR.Send → Handler → Retorna OneOf → Controller trata Match → 200 ou 400
+
 #dotnet #csharp #dotnetdeveloper #developers #microsoft  #dotnetcore 
 
 

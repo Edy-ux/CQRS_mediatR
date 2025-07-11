@@ -8,6 +8,7 @@ using CQRS_mediatR.Data;
 using CQRS_mediatR.Domain.Entity;
 using CQRS_mediatR.Domain.Validators.Exceptions;
 using CQRS_mediatR.Domain.ValueObjects;
+using CQRS_mediatR.Infrastructure.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace CQRS_mediatR.Repository;
@@ -16,18 +17,16 @@ public class GamePlayerRepository(GamePlayerDbContext context) : IGamePlayerRepo
 {
     public async Task<Guid> InsertPlayerAsync(GamePlayer player, CancellationToken cancellationToken)
     {
-
         try
         {
             var exists = await context.GamePlayers
-            .AnyAsync(p => p.Email == player.Email, cancellationToken);
+                .AnyAsync(p => p.Email == player.Email, cancellationToken);
 
             if (exists)
                 throw new GamePlayerAlreadyExistsException(player.Email);
             context.GamePlayers.Add(player);
             await context.SaveChangesAsync(cancellationToken);
             return player.Id;
-
         }
         catch (Exception ex) when (ex is not GamePlayerAlreadyExistsException)
         {
@@ -40,27 +39,12 @@ public class GamePlayerRepository(GamePlayerDbContext context) : IGamePlayerRepo
     {
         try
         {
-
             var activePlayers = await context.GamePlayers
-                .Where(p => p.Status == PlayerStatus.Active) // Or g => 
-                .Select(player => new GamePlayerDetailResponse
-                {
-                    Id = player.Id,
-                    Name = player.Name,
-                    Email = player.Email,
-                    Role = player.Role!,
-                    Status = player.Status!.ToString(),
-                    CreatedAt = player.CreatedAt,
-                    UpdatedAt = player.UpdatedAt,
-                    IsActive = player.IsActive,
-                    IsInactive = player.IsInactive,
-                    IsSuspended = player.IsSuspended
-                })
+                .OnlyActive()
+                .SelectPlayersActive()
                 .ToListAsync();
-            if (activePlayers is null)
-                throw new GamePlayerNotFoundException($"Cannot find any active players.");
 
-            return activePlayers;
+            return activePlayers ?? throw new GamePlayerNotFoundException($"Cannot find any active players.");
         }
         catch (Exception ex) when (ex is not GamePlayerNotFoundException)
         {
@@ -86,6 +70,5 @@ public class GamePlayerRepository(GamePlayerDbContext context) : IGamePlayerRepo
             throw new DatabaseException(
                 "Error when searching for gameplayer from the database", ex);
         }
-
     }
 }

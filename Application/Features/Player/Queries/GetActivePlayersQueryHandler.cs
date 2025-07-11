@@ -1,21 +1,29 @@
-
 using CQRS_mediatR.Application.DTOs;
+using CQRS_mediatR.Application.Errors;
 using CSharpFunctionalExtensions;
 using CQRS_mediatR.Domain.Interfaces;
-using CQRS_mediatR.Domain;
+using OneOf;
 using MediatR;
 using CQRS_mediatR.Application.Features.Player.Queries;
+using CQRS_mediatR.Domain.Validators.Exceptions;
 
 namespace CQRS_mediatR.Features.Player.Queries;
 
-public class GetActivePlayersQueryHandler(IGamePlayerRepository repository) : IRequestHandler<GetActivePlayersQuery, Result<IEnumerable<GamePlayerDetailResponse>>>
-
+public class GetActivePlayersQueryHandler(IGamePlayerRepository repository)
+    : IRequestHandler<GetActivePlayersQuery, OneOf<IEnumerable<GamePlayerDetailResponse>, GamePlayerNotFound>>
 {
-
-    public async Task<Result<IEnumerable<GamePlayerDetailResponse>>> Handle(GetActivePlayersQuery request, CancellationToken cancellationToken)
+    public async Task<OneOf<IEnumerable<GamePlayerDetailResponse>, GamePlayerNotFound>> Handle(
+        GetActivePlayersQuery request, CancellationToken cancellationToken)
     {
-        var players = await repository.GetActivePlayersAsync();
-        return Result.Success(players);
+        try
+        {
+            var players = await repository.GetActivePlayersAsync();
+            return players.ToList();
+        }
+        catch (GamePlayerNotFoundException ex)
+        {
+            return new GamePlayerNotFound
+                (ex.Message);
+        }
     }
-
 }

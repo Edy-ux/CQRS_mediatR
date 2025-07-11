@@ -28,19 +28,13 @@ public class GamePlayerController : ControllerBase
     }
 
     [HttpGet("active")]
-    public async Task<IActionResult> GetActives()
+    public async Task<IResult> GetActives()
     {
-        try
-        {
-            var result = await _sender.Send(new GetActivePlayersQuery());
-            return Ok(result.Value);
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "Erro ao buscar jogadores ativos");
-            return StatusCode(StatusCodes.Status500InternalServerError,
-                new { message = "Erro ao buscar jogadores ativos" });
-        }
+        var result = await _sender.Send(new GetActivePlayersQuery());
+
+        return result.Match(players => Results.Ok(players),
+            error => Results.BadRequest(new { message = error.message })
+        );
     }
 
     [HttpGet("{id}")]
@@ -68,7 +62,10 @@ public class GamePlayerController : ControllerBase
             {
                 _logger.LogError("Error during player creation");
                 return TypedResults.BadRequest(new ProblemDetails
-                { Detail = error.message, Title = "Domain Errors", Type = error.errorType.ToString(), Status = StatusCodes.Status400BadRequest });
+                {
+                    Detail = error.message, Title = "Domain Errors", Type = error.errorType.ToString(),
+                    Status = StatusCodes.Status400BadRequest
+                });
             }
         );
     }

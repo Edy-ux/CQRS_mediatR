@@ -35,12 +35,10 @@ public class DatabaseException : Exception
 
     }
 }
-
 public class GamePlayerNotFoundException : Exception
 {
     public GamePlayerNotFoundException(string message) : base(message) { }
 }
-
 public class GamePlayerRepositoryException(string message) : Exception(message);
 
 public class GamePlayerAlreadyExistsException : Exception

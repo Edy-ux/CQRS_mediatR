@@ -26,7 +26,7 @@ namespace CQRS_mediatR.Application.Features.Player.commands
             {
                 return new CreationPlayerError(
                  ex.Message,
-                 TypeError.Validation);
+                 TypeError.Conflict);
             }
 
 
